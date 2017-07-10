@@ -24,22 +24,8 @@
     "tabs",
     "https://*.service-now.com/*"
   ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "css": [
-        "src/inject/inject.css"
-      ]
-    },
-    {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ]
-    }
+  "content_scripts": [],
+  "web_accessible_resources": [
+    "icons/*.png"
   ]
 }
