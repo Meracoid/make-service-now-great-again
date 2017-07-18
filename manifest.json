@@ -24,7 +24,13 @@
     "tabs",
     "https://*.service-now.com/*"
   ],
-  "content_scripts": [],
+  "content_scripts": [
+    {
+      "matches": ["https://*.service-now.com/*"],
+      "css": ["src/inject/inject.css"],
+      "js": ["src/inject/inject.js", "js/jquery/jquery.min.js"]
+    }
+  ],
   "web_accessible_resources": [
     "icons/*.png"
   ]

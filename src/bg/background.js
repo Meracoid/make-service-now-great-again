@@ -1,13 +1,21 @@
-// if you checked "fancy-settings" in extensionizr.com, uncomment this lines
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+  	sendResponse({
+      'copy': function() {
+        var sandbox = document.getElementById('sandbox');
+        sandbox.value = request.value;
+        sandbox.select();
+        document.execCommand('copy');
+        sandbox.value = '';
+      },
+      '': function() {}
+    }[request['action']]());
+});
 
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
-
-
-//example of using a message handler from the inject scripts
-chrome.extension.onMessage.addListener(
-  function(request, sender, sendResponse) {
-  	chrome.pageAction.show(sender.tab.id);
-    sendResponse();
-  });
+// copies str to clipboard - chrome.extension.getBackgroundPage().copy(str)
+function copy(str) {
+    var sandbox = document.getElementById('sandbox');
+    sandbox.value = str;
+    sandbox.select();
+    document.execCommand('copy');
+    sandbox.value = '';
+}
