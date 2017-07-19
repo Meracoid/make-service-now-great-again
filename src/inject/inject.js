@@ -35,7 +35,7 @@ function configureUpdateSetPicker() {
 		e.style.cursor = 'pointer';
 		e.title = 'Go to current update set';
 		e.onclick = function() {
-			window.location.href = '/nav_to.do?uri=/sys_update_set.do?sys_id=' + 
+			$("#gsft_main")[0].src = '/sys_update_set.do?sys_id=' + 
 				$('select#update_set_picker_select > option:selected').val().split(':')[1];
 		}
 		return e;
