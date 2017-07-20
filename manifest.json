@@ -1,6 +1,6 @@
 {
   "name": "Make Service-Now Great Again",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "manifest_version": 2,
   "description": "A collection of enhancements for Service-Now.",
   "homepage_url": "https://github.com/Meracoid/make-service-now-great-again",
@@ -13,11 +13,6 @@
   "background": {
     "page": "src/bg/background.html",
     "persistent": true
-  },
-  "page_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "page action demo",
-    "default_popup": "src/page_action/page_action.html"
   },
   "permissions": [
     "chrome://favicon/",
