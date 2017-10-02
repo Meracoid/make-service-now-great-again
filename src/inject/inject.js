@@ -14,6 +14,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 function configureUpdateSetPicker() {
 	var pickerIcon = $('.concourse-update-set-picker > div > .icon-document-multiple');
+	pickerIcon[0].title = 'Copy current update set to clipboard';
 	pickerIcon.click(function() {
 		var name = $('select#update_set_picker_select > option:selected')[0].label;
 		pickerIcon[0].classList.remove('icon-document-multiple');
@@ -27,7 +28,17 @@ function configureUpdateSetPicker() {
 			'value': /^(.*) \[.*\]$/g.exec(name)[1]
 		});
 	});
-	pickerIcon[0].title = 'Copy current update set to clipboard';
+	pickerIcon.before(function () {
+		var e = document.createElement('span');
+		e.classList.add('label-icon', 'icon-add');
+		e.style.marginRight = '10px';
+		e.style.cursor = 'pointer';
+		e.title = 'Create new update set';
+		e.onclick = function() {
+			$("#gsft_main")[0].src = '/sys_update_set.do?sys_id=-1'
+		}
+		return e;
+	})
 	pickerIcon.before(function () {
 		var e = document.createElement('span');
 		e.classList.add('label-icon', 'icon-console');
@@ -35,7 +46,7 @@ function configureUpdateSetPicker() {
 		e.style.cursor = 'pointer';
 		e.title = 'Go to current update set';
 		e.onclick = function() {
-			window.location.href = '/nav_to.do?uri=/sys_update_set.do?sys_id=' + 
+			$("#gsft_main")[0].src = '/sys_update_set.do?sys_id=' + 
 				$('select#update_set_picker_select > option:selected').val().split(':')[1];
 		}
 		return e;
